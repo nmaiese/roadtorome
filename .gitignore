@@ -87,3 +87,11 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+.idea/
+.sublime-project
+.sublime-workspace
+chunks/
+rawfile/
+roadtorome.sublime-project
+roadtorome.sublime-workspace
