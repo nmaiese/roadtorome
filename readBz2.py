@@ -34,7 +34,7 @@ def extractBZ2Articles(file):
                     break
 
     if len(articles)>0:
-        print 'N° of articles extracted in file %s : %s' % (file ,str(len(articles)))
+        # print 'N° of articles extracted in file %s : %s' % (file ,str(len(articles)))
         return articles
     else:
         return None
@@ -49,9 +49,9 @@ def extractTarget(articles):
         key = re.findall(r'<title>(.*?)</title>', a)[0]
         target = re.findall(r"\[\[(.*?)\]\]", a)
         objects_list.append({'key': key, 'target': target})
-        print '% s == >> Targets:  %s' % (key, len(target))
+        # print '% s == >> Targets:  %s' % (key, len(target))
     if len(objects_list)>0:
-        print '\nN° of Articles with Target extracted: %s' % (len(objects_list))
+        # print '\nN° of Articles with Target extracted: %s' % (len(objects_list))
         return objects_list
     else:
         return None
@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
     graph_list = []
 
-    for file in files:
+    for file in tqdm(files):
         articles = extractBZ2Articles(file)
         graph_list += extractTarget(articles)
 
