@@ -1,16 +1,16 @@
 import os
 import bz2
 
-filename = '/Users/N/Desktop/MEC/roadtorome/rawfile/itwiki-20161120-pages-articles.xml.bz2'
 
 
-def split_xml(filename):
+
+def split_xml(filename, folder):
     ''' The function gets the filename of wiktionary.xml.bz2 file as  input and creates
     smallers chunks of it in a the diretory chunks
     '''
     # Check and create chunk diretory
-    if not os.path.exists("chunks"):
-        os.mkdir("chunks")
+    if not os.path.exists(folder):
+        os.mkdir(folder)
     # Counters
     pagecount = 0
     filecount = 1
@@ -34,9 +34,4 @@ def split_xml(filename):
         chunkfile.close()
     except:
         print 'Files already close'
-
-
-def openBz2(filename):
-    bzfile = bz2.BZ2File(filename)
-    return bzfile
 

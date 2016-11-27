@@ -2,7 +2,6 @@ import bz2
 import os
 import glob
 import re
-from tqdm import tqdm
 
 # return a list of all files *extension in folder
 def findFiles(folder, extension):
@@ -42,7 +41,6 @@ def extractBZ2Articles(file):
 
 # Read a list of Wikipedia articles, extract title and
 # links in page and store it in a list of dict
-
 def extractTarget(articles):
     objects_list = []
     for a in articles:
@@ -57,16 +55,5 @@ def extractTarget(articles):
         return None
 
 
-if __name__ == '__main__':
-
-    #set bz2 files folder
-    folder = 'chunks'
-    files = findFiles(folder, '*.bz2')
-
-    graph_list = []
-
-    for file in tqdm(files):
-        articles = extractBZ2Articles(file)
-        graph_list += extractTarget(articles)
 
 
