@@ -26,3 +26,5 @@ if __name__ == '__main__':
     # Upload a graph object to db
     for g in graph_list:
         neo4jconnection.addObjectGraph(g)
+
+
