@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import neo4jconnection
 import readBz2
 import chunkfile
