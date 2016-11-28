@@ -3,19 +3,18 @@ import os
 import glob
 import re
 
-# return a list of all files *extension in folder
 def findFiles(folder, extension):
+    ''' return a list of all files *extension in folder'''
     if os.path.exists(folder):
         folder_pattern = os.path.join(folder, extension)
         return glob.glob(folder_pattern)
     else:
         print 'Folder "%s" not found' % folder
 
-
-# Read a list of Bz2 file, separate all articles
-# contained in tag <page> ... </page>
-# and return it in a list
 def extractBZ2Articles(file):
+    ''' Read a list of Bz2 file, separate all articles
+    contained in tag <page> ... </page>
+    and return it in a list '''
     reader  = bz2.BZ2File(file)
     articles = []
     while True:
@@ -31,25 +30,21 @@ def extractBZ2Articles(file):
                     article += line
                     articles.append(article)
                     break
-
     if len(articles)>0:
-        # print 'N° of articles extracted in file %s : %s' % (file ,str(len(articles)))
         return articles
     else:
         return None
 
 
-# Read a list of Wikipedia articles, extract title and
-# links in page and store it in a list of dict
 def extractTarget(articles):
+    '''Read a list of Wikipedia articles, extract title and
+    links in page and store it in a list of dict'''
     objects_list = []
     for a in articles:
         key = re.findall(r'<title>(.*?)</title>', a)[0]
         target = re.findall(r"\[\[(.*?)\]\]", a)
         objects_list.append({'key': key, 'target': target})
-        # print '% s == >> Targets:  %s' % (key, len(target))
     if len(objects_list)>0:
-        # print '\nN° of Articles with Target extracted: %s' % (len(objects_list))
         return objects_list
     else:
         return None
