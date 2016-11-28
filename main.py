@@ -6,7 +6,7 @@ from tqdm import tqdm
 #Original DB file
 filename = '/Users/N/Desktop/MEC/roadtorome/rawfile/itwiki-20161120-pages-articles.xml.bz2'
 #Folder for splitted DB files
-folder = 'chunks'
+folder = 'data'
 
 
 if __name__ == '__main__':
@@ -21,8 +21,7 @@ if __name__ == '__main__':
     # For every file, extract articles list and create object graph to upload
     for file in tqdm(files):
         articles = readBz2.extractBZ2Articles(file)
-        graph_list += readBz2.extractTarget(articles)
-
+    graph_list += readBz2.extractTarget(articles)
     # Upload a graph object to db
     for g in graph_list:
         neo4jconnection.addObjectGraph(g)

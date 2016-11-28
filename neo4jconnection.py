@@ -21,6 +21,3 @@ def addObjectGraph(obj):
     session.close()
 
 
-obj = graph_list[0]
-
-
