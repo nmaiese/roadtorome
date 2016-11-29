@@ -31,7 +31,7 @@ if __name__ == '__main__':
         graph_list += readBz2.extractTarget(articles)
 
     with open('graph.json', 'w') as f:
-        json.dump(graph, f)
+        json.dump(graph_list, f)
 
     failed = []
 
