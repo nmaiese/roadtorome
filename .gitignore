@@ -95,3 +95,5 @@ chunks/
 rawfile/
 roadtorome.sublime-project
 roadtorome.sublime-workspace
+*.json
+graph.json

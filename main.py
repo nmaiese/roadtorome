@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import neo4jconnection
 import readBz2
 import chunkfile
@@ -28,6 +30,8 @@ if __name__ == '__main__':
         articles = readBz2.extractBZ2Articles(file)
         graph_list += readBz2.extractTarget(articles)
 
+    with open('graph.json', 'w') as f:
+        json.dump(graph_list, f)
 
     failed = []
 
@@ -43,5 +47,6 @@ if __name__ == '__main__':
 
     with open('failed.json', 'w') as f:
         json.dump(failed, f)
-    
+
+
 
